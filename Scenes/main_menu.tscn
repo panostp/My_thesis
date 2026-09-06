@@ -1,0 +1,164 @@
+[gd_scene load_steps=12 format=3 uid="uid://b7o8qbjfrqtq2"]
+
+[ext_resource type="Script" uid="uid://b30vjhtwwb6mr" path="res://Scenes/MainMenu.cs" id="1_28flt"]
+[ext_resource type="Script" uid="uid://bg5gvg6ylatpt" path="res://customNodes/SingletonCaller.cs" id="2_48xlc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ce3w2"]
+bg_color = Color(0.22287032, 0.22287032, 0.22287032, 0.69411767)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+expand_margin_top = 22.0
+expand_margin_bottom = 22.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_28flt"]
+font_size = 37
+font_color = Color(14.525561, 15.441137, 18.821728, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_28flt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_48xlc"]
+bg_color = Color(1.4687854, 1.4687854, 1.4687854, 1)
+border_blend = true
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_28flt"]
+bg_color = Color(2.200488, 6.5670857, 18.04701, 0.17254902)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ehe0"]
+bg_color = Color(11.708403, 11.708403, 11.708403, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 20
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_erv1k"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_48xlc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1ehe0"]
+
+[node name="main_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_28flt")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.003921569, 0.80784315, 1, 1)
+
+[node name="InSceneSingleton" type="Node" parent="."]
+
+[node name="SingletonCaller" type="Node2D" parent="."]
+script = ExtResource("2_48xlc")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.01953125
+anchor_top = 0.12638889
+anchor_right = 0.29428124
+anchor_bottom = 0.8948889
+offset_right = 0.3199997
+offset_bottom = -0.3199997
+theme_override_styles/panel = SubResource("StyleBoxFlat_ce3w2")
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.13725491, 0.17254902, 0.39215687, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_font_sizes/font_size = 32
+text = "Diplo car"
+label_settings = SubResource("LabelSettings_28flt")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(12.201406, 16.497572, 18.892157, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxEmpty_28flt")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_48xlc")
+theme_override_styles/hover = SubResource("StyleBoxFlat_28flt")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_1ehe0")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_erv1k")
+text = "Start"
+
+[node name="settings" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(12.201406, 16.497572, 18.892157, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxEmpty_48xlc")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_48xlc")
+theme_override_styles/hover = SubResource("StyleBoxFlat_28flt")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_1ehe0")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_erv1k")
+text = "Opotions"
+
+[node name="Button3" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(12.201406, 16.497572, 18.892157, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxEmpty_1ehe0")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_48xlc")
+theme_override_styles/hover = SubResource("StyleBoxFlat_28flt")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_1ehe0")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_erv1k")
+text = "Exit"
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Button" to="." method="OnStartPress"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/settings" to="." method="setingsPressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Button3" to="." method="_on_exit_pressed"]

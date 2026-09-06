@@ -1,0 +1,15 @@
+[configuration]
+
+entry_symbol = "helloWorld_init"
+compatibility_minimum = "4.1"
+
+[libraries]
+
+
+windows.debug.x86_64 = "ress://bin/HelloWorld.windows.template_debug.x86_64.dll"
+windows.release.x86_64 = "ress://bin/HelloWorld.windows.template_debug.x86_64.dll"
+
+windows.x86_64.single.debug = "./HelloWorld.windows.template_debug.x86_64.dll"
+windows.x86_64.double.debug = "./HelloWorld.windows.template_debug.x86_64.dll"
+windows.x86_64.single.release = "./HelloWorld.windows.template_debug.x86_64.dll"
+windows.x86_64.double.release = "./HelloWorld.windows.template_debug.x86_64.dll"

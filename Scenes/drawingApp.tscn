@@ -1,0 +1,88 @@
+[gd_scene load_steps=3 format=3 uid="uid://brvhcnfnl7j62"]
+
+[ext_resource type="Script" uid="uid://llln00hds4e6" path="res://Scenes/DrawingApp.cs" id="1_7vldi"]
+[ext_resource type="Script" uid="uid://cagbqo062bbj8" path="res://Scenes/circle.cs" id="2_efoxr"]
+
+[node name="drawingApp" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7vldi")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.41700003
+anchor_right = 0.5
+anchor_bottom = 0.41700003
+offset_left = -494.5
+offset_top = -181.216
+offset_right = 494.5
+offset_bottom = 181.784
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Circle" type="Node2D" parent="."]
+script = ExtResource("2_efoxr")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.89800006
+anchor_top = 0.94100004
+anchor_right = 0.89800006
+anchor_bottom = 0.94100004
+offset_left = -68.49609
+offset_top = -22.768005
+offset_right = 67.50391
+offset_bottom = 22.231995
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 27
+text = "Clear"
+
+[node name="HSlider" type="HSlider" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.513
+anchor_top = 0.91200006
+anchor_right = 0.513
+anchor_bottom = 0.91200006
+offset_left = -264.976
+offset_top = -40.976013
+offset_right = 265.024
+offset_bottom = 41.023987
+grow_horizontal = 2
+grow_vertical = 0
+min_value = 8.0
+max_value = 26.0
+value = 8.0
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(517, 576)
+
+[node name="send" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.029000001
+anchor_top = 0.906
+anchor_right = 0.147
+anchor_bottom = 0.975
+offset_left = -0.40800095
+offset_top = 1.9119873
+offset_right = 0.15600586
+offset_bottom = 0.2000122
+grow_vertical = 0
+theme_override_font_sizes/font_size = 27
+text = "Send"
+
+[node name="CatmullRom" type="CatmullRom" parent="."]
+
+[connection signal="pressed" from="Button" to="." method="OnClearPressed"]
+[connection signal="changed" from="HSlider" to="." method="OnBrushSizeChanged"]
+[connection signal="value_changed" from="HSlider" to="." method="OnBrushSizeChanged"]
+[connection signal="pressed" from="send" to="." method="SendPress"]

@@ -1,0 +1,123 @@
+[gd_scene load_steps=6 format=3 uid="uid://buexdykjjs64w"]
+
+[ext_resource type="Script" uid="uid://r8i456euhy38" path="res://Scenes/DrawAppMainGrid.cs" id="1_5icnw"]
+[ext_resource type="Script" uid="uid://vl35c78rjud2" path="res://customNodes/ChunckContainer.cs" id="2_gpyqo"]
+[ext_resource type="Script" uid="uid://cot0dry2t15ns" path="res://customNodes/WebSocket.cs" id="3_mxrrm"]
+[ext_resource type="Script" uid="uid://b0v6dbf00fn0l" path="res://customNodes/Frontier.cs" id="4_x1hqr"]
+
+[sub_resource type="Theme" id="Theme_5icnw"]
+
+[node name="drawAppMainGrid" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5icnw")
+
+[node name="Line2D" type="Line2D" parent="."]
+z_index = 100
+
+[node name="lineDraw" type="Line2D" parent="."]
+
+[node name="TextureRect" type="Control" parent="."]
+z_index = 1
+layout_mode = 1
+anchor_left = 0.07725695
+anchor_top = 0.095679015
+anchor_right = 0.9244792
+anchor_bottom = 0.7654321
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="ChunckContainer" type="Control" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_gpyqo")
+PenaltyRadius = 1000
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+z_index = 100
+z_as_relative = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.0015625
+anchor_top = 0.80138886
+anchor_right = 1.0005313
+anchor_bottom = 1.0101666
+offset_right = 0.3199463
+offset_bottom = -0.32000732
+theme = SubResource("Theme_5icnw")
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="TextureRect2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.20700002
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -0.05000305
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.3019608, 0.3019608, 0.3019608, 0.7529412)
+metadata/_edit_use_anchors_ = true
+
+[node name="Check" type="Button" parent="TextureRect2/ColorRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.79656744
+anchor_top = 0.28613463
+anchor_right = 0.9675674
+anchor_bottom = 0.68025225
+offset_left = -0.42004395
+offset_top = -0.05000305
+offset_right = 0.2828369
+offset_bottom = 0.049995422
+text = "Check"
+metadata/_edit_use_anchors_ = true
+
+[node name="Button2" type="Button" parent="TextureRect2/ColorRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.09041309
+anchor_top = 0.2857143
+anchor_right = 0.26087138
+anchor_bottom = 0.68884873
+offset_right = 0.30200005
+offset_bottom = 0.02699995
+text = "Clear"
+metadata/_edit_use_anchors_ = true
+
+[node name="webSocket" type="Node" parent="."]
+script = ExtResource("3_mxrrm")
+
+[node name="PathFinding" type="PathFinding" parent="."]
+
+[node name="CatmullRom" type="CatmullRom" parent="."]
+
+[node name="Frontier" type="Node" parent="."]
+script = ExtResource("4_x1hqr")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.00703125
+anchor_top = 0.013888889
+anchor_right = 0.06751485
+anchor_bottom = 0.061385803
+offset_right = 0.40888834
+offset_bottom = -0.1977787
+text = "Menu"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="TextureRect2/ColorRect/Check" to="." method="OnValidatePath"]
+[connection signal="pressed" from="TextureRect2/ColorRect/Button2" to="." method="OnClearPressed"]
+[connection signal="ESP32Data" from="webSocket" to="." method="on_websocket_esp_32_data"]
+[connection signal="pressed" from="Button" to="." method="OnMenu"]
